@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Bug Report Submission</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+        {{ form.name.label }}
+        {{ form.name(class_="form-control" + (" is-invalid" if form.name.errors else "")) }}
+        {% for error in form.name.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        {{ form.email.label }}
+        {{ form.email(class_="form-control" + (" is-invalid" if form.email.errors else "")) }}
+        {% for error in form.email.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        {{ form.description.label }}
+        {{ form.description(class_="form-control" + (" is-invalid" if form.description.errors else ""), rows="5") }}
+        {% for error in form.description.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        <label>{{ form.severity.label }}</label><br>
+        {% for subfield in form.severity %}
+            <label>
+                {{ subfield() }}
+                {{ subfield.label.text }}
+            </label><br>
+        {% endfor %}
+        {% for error in form.severity.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    {{ form.submit(class_="btn") }}
+</form>
+{% endblock %}
