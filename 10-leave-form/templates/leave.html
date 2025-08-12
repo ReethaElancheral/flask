@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Leave Application</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+        {{ form.name.label }}
+        {{ form.name(class_="form-control" + (" is-invalid" if form.name.errors else "")) }}
+        {% for error in form.name.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        {{ form.department.label }}
+        {{ form.department(class_="form-control" + (" is-invalid" if form.department.errors else "")) }}
+        {% for error in form.department.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        {{ form.reason.label }}
+        {{ form.reason(class_="form-control" + (" is-invalid" if form.reason.errors else ""), rows="4") }}
+        {% for error in form.reason.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        {{ form.start_date.label }}
+        {{ form.start_date(class_="form-control" + (" is-invalid" if form.start_date.errors else "")) }}
+        {% for error in form.start_date.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        {{ form.end_date.label }}
+        {{ form.end_date(class_="form-control" + (" is-invalid" if form.end_date.errors else "")) }}
+        {% for error in form.end_date.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    {{ form.submit(class_="btn") }}
+</form>
+{% endblock %}
