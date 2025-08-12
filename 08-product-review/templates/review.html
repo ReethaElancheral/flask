@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Product Review</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+        {{ form.name.label }}
+        {{ form.name(class_="form-control" + (" is-invalid" if form.name.errors else "")) }}
+        {% for error in form.name.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        {{ form.email.label }}
+        {{ form.email(class_="form-control" + (" is-invalid" if form.email.errors else "")) }}
+        {% for error in form.email.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        {{ form.rating.label }}
+        {{ form.rating(class_="form-control" + (" is-invalid" if form.rating.errors else "")) }}
+        {% for error in form.rating.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        {{ form.review.label }}
+        {{ form.review(class_="form-control" + (" is-invalid" if form.review.errors else ""), rows="5") }}
+        {% for error in form.review.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    {{ form.submit(class_="btn") }}
+</form>
+{% endblock %}
